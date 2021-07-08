@@ -6,9 +6,17 @@ const massive = require("massive");
 
 const app = express();
 
+const dataCntrl = require("./controllers/dataController");
+
 const { CONNECTION_STRING, SERVER_PORT } = process.env;
 
 app.use(express.json());
+
+let cb = () => {
+  console.log("hit");
+};
+
+app.get("/api/full_contact/token", dataCntrl.getBearerToken);
 
 massive({
   connectionString: CONNECTION_STRING,
