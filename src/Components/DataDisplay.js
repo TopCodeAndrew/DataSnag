@@ -53,7 +53,7 @@ export default function DataDisplay(props) {
     return <h2>{data}</h2>;
   };
 
-  let mappedData =
+  let sortedData =
     // this ternary protects from an error while the user's data is being fetched by axios
     type === "undefined"
       ? null
@@ -169,5 +169,5 @@ export default function DataDisplay(props) {
 
   // console.log("mapped", userData);
 
-  return <div>{mappedData}</div>;
+  return <div>{sortedData}</div>;
 }
