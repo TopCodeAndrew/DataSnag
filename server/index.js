@@ -17,7 +17,7 @@ let cb = () => {
   console.log("hit");
 };
 
-app.post("/api/user_data", dataCntrl.getUserData);
+app.get("/api/user_data", dataCntrl.getUserData);
 
 massive({
   connectionString: CONNECTION_STRING,
