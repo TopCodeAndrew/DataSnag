@@ -17,16 +17,7 @@ let cb = () => {
   console.log("hit");
 };
 
-app.post("/api/user_data", (req, res) => {
-  dataCntrl
-    .getUserData("https://jsonplaceholder.typicode.com/todos/1")
-    .then((response) => {
-      res.json(response);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
-});
+app.post("/api/user_data", dataCntrl.getUserData);
 
 massive({
   connectionString: CONNECTION_STRING,

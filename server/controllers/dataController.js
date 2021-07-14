@@ -4,8 +4,9 @@ const request = require("request");
 const { FULL_CONTACT_BEARER_TOKEN } = process.env;
 
 module.exports = {
-  getUserData: (url) => {
-    return new Promise((resolve, reject) => {
+  getUserData: async (req, res) => {
+    const { url } = req.body;
+    const returnedResult = await new Promise((resolve, reject) => {
       // this will probably simply need to be request.post (url......)
       request(url, { json: true }, (err, res, body) => {
         if (err) reject(err);
@@ -13,7 +14,6 @@ module.exports = {
       });
     });
 
-    // console.log(req);
-    // res.status(200).send("FULL_CONTACT_BEARER_TOKEN");
+    res.status(200).send(returnedResult);
   },
 };
