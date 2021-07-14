@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const { response } = require("express");
 const express = require("express");
 
 const massive = require("massive");
@@ -16,7 +17,16 @@ let cb = () => {
   console.log("hit");
 };
 
-app.get("/api/full_contact/token", dataCntrl.getBearerToken);
+app.post("/api/user_data", (req, res) => {
+  dataCntrl
+    .getUserData("https://jsonplaceholder.typicode.com/todos/1")
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
 
 massive({
   connectionString: CONNECTION_STRING,

@@ -42,5 +42,5 @@ export default function DataDisplay(props) {
       .catch((err) => console.log(err));
   }, []);
 
-  return <div>This is DataDisplay</div>;
+  return <div>This is DataDisplay.js</div>;
 }
